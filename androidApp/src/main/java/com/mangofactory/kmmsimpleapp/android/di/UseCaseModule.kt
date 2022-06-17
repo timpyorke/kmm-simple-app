@@ -1,5 +1,7 @@
 package com.mangofactory.kmmsimpleapp.android.di
 
+import com.mangofactory.kmmsimpleapp.android.domain.GetPostDetailUseCase
+import com.mangofactory.kmmsimpleapp.android.domain.GetPostDetailUseCaseImpl
 import com.mangofactory.kmmsimpleapp.android.domain.GetPostListUseCase
 import com.mangofactory.kmmsimpleapp.android.domain.GetPostListUseCaseImpl
 import dagger.Binds
@@ -13,4 +15,9 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindGetPostListUseCase(getPostListUseCaseImpl: GetPostListUseCaseImpl): GetPostListUseCase
+
+    @Binds
+    abstract fun bindGetPostDetailUseCase(getPostDetailUseCaseImpl: GetPostDetailUseCaseImpl): GetPostDetailUseCase
+
+
 }

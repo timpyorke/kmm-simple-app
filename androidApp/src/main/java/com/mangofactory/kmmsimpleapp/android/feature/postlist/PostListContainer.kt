@@ -17,7 +17,6 @@ fun PostListContainer(navHostController: NavHostController) {
     val activity = (LocalContext.current as? Activity)
 
     LaunchedEffect(Unit) {
-        viewModel.enterScreen()
         viewModel.event.observe(lifecycleOwner) {
             when (it) {
                 is PostListEvent.Navigate -> navHostController.navigate(it.route)
@@ -28,7 +27,7 @@ fun PostListContainer(navHostController: NavHostController) {
     PostListScreen(
         viewState = viewState,
         onItemSelect = {
-
+            viewModel.onItemSelect("${it.id}")
         },
         onBackPress = {
             activity?.finish()

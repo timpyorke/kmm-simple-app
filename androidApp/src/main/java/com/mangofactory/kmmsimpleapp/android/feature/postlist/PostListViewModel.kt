@@ -3,6 +3,7 @@ package com.mangofactory.kmmsimpleapp.android.feature.postlist
 import androidx.lifecycle.viewModelScope
 import com.mangofactory.kmmsimpleapp.android.common.BaseStateViewModel
 import com.mangofactory.kmmsimpleapp.android.domain.GetPostListUseCase
+import com.mangofactory.kmmsimpleapp.android.navgraph.Route
 import com.mangofactory.kmmsimpleapp.model.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -28,7 +29,11 @@ class PostListViewModel @Inject constructor(
 ) :
     BaseStateViewModel<PostListViewState, PostListEvent>(initialState = PostListViewState()) {
 
-    fun enterScreen() = viewModelScope.launch {
+    init {
+        enterScreen()
+    }
+
+    private fun enterScreen() = viewModelScope.launch {
         setState {
             copy(
                 posts = emptyList(),
@@ -56,5 +61,11 @@ class PostListViewModel @Inject constructor(
                     )
                 }
             }
+    }
+
+    fun onItemSelect(id: String) {
+        setEvent(
+            PostListEvent.Navigate("${Route.PostDetail}/$id")
+        )
     }
 }

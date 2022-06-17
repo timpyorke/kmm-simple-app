@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.mangofactory.kmmsimpleapp.android.feature.postdeatil.PostDetailContainer
 import com.mangofactory.kmmsimpleapp.android.feature.postlist.PostListContainer
 
 object Route {
@@ -31,7 +32,7 @@ fun MainGraph() {
         }
         composable("${Route.PostDetail}/{id}") {
             val id = it.arguments?.getString("id") ?: ""
-            //PostDetailContainer(navController, id)
+            PostDetailContainer(navController, id)
         }
     }
 }

@@ -35,7 +35,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
-    // Compose
+    // Jetpack DataStore
+    implementation( "androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-core:1.0.0")
+
+    // Jetpack Compose
     implementation("androidx.compose.ui:ui:1.1.1")
     implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
     implementation("androidx.compose.material:material:1.1.1")

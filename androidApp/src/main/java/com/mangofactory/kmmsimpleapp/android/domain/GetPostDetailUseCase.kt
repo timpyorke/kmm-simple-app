@@ -1,21 +1,20 @@
 package com.mangofactory.kmmsimpleapp.android.domain
 
 import com.mangofactory.kmmsimpleapp.PostRepository
-import com.mangofactory.kmmsimpleapp.networking.PostService
 import com.mangofactory.kmmsimpleapp.model.Post
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-interface GetPostListUseCase {
-    operator fun invoke(): Flow<List<Post>>
+interface GetPostDetailUseCase {
+    operator fun invoke(id: Int) : Flow<Post>
 }
 
-class GetPostListUseCaseImpl @Inject constructor(
+class GetPostDetailUseCaseImpl @Inject constructor(
     private val postRepository: PostRepository
-) : GetPostListUseCase {
-    override operator fun invoke(): Flow<List<Post>> = flow {
-        postRepository.getPosts().also {
+) : GetPostDetailUseCase{
+    override fun invoke(id: Int): Flow<Post> = flow {
+        postRepository.getPostById(id).also {
             emit(it)
         }
     }
